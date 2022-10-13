@@ -15,7 +15,7 @@ from django.contrib.auth import login
 from django.views import View
 import jwt
 from rest_framework.exceptions import AuthenticationFailed
-
+from .forms import RegisterForm
 
 class Register(APIView):
     def post(self,request):
@@ -24,7 +24,20 @@ class Register(APIView):
             serializer.save()
             return Response(serializer.data)
         
-           
+# class Register(View):
+#     def get(self, request):
+#         obj = RegisterForm()
+#         return render(request, "signup_form.html", {'form': obj})
+#         #return Response(obj)
+
+#     def post(self, request):
+#         obj = RegisterForm(request.POST)
+#         if obj.is_valid():
+#             obj.save()
+#             return redirect('blog:')
+#         else:
+#             return render(request, "signup_form.html", {'form': obj})
+                  
 
 class Login(APIView):
     def post(self, request):

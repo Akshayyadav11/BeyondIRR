@@ -14,7 +14,7 @@
 
 <h1>Signup!</h1>
 <div align="center">
-<form method = "POST" action="{% url 'register' %}">
+<!-- <form method = "POST" action="{% url 'register' %}">
     {% csrf_token %}
     username:
     <br/>
@@ -28,6 +28,24 @@
     <br/>
     <input type="password" name="password2" />
     <br/>
+    <input class ="btn btn-primary" type="submit" value= "signup" />
+    <br/>
+
+
+
+</form> -->
+
+<form method = "POST" action="{% url 'register' %}">
+    {% csrf_token %}
+    Email:   
+   {{form.email}}
+    <br/>
+    Password:
+    
+    {{form.password}}
+    <br/>
+   
+    
     <input class ="btn btn-primary" type="submit" value= "signup" />
     <br/>
 
