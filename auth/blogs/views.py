@@ -8,7 +8,10 @@ from .forms import PostForm
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
+from django.contrib.auth.decorators import login_required
 
+#@login_required(login_url='blog_list')
+#@login_required()
 class PostCreate(View):
     def get(self, request):
         obj = PostForm()        

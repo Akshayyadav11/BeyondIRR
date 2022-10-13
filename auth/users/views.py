@@ -20,10 +20,11 @@ from rest_framework.exceptions import AuthenticationFailed
 class Register(APIView):
     def post(self,request):
         serializer = UserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-            
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        
+           
 
 class Login(APIView):
     def post(self, request):
@@ -49,14 +50,14 @@ class Login(APIView):
         #       status=200,
         #       content_type="application/json"
         #     )
-        breakpoint()
+        #breakpoint()
         loginserializer = UserLoginSerializer(data=request.data)
         if loginserializer.is_valid(raise_exception=True):
             
             email = loginserializer.data.get('email')
             password = loginserializer.data.get('password')
             user = authenticate(request, email=email, password=password)
-            breakpoint()
+            #breakpoint()
             if user is not None:
                 login(request, user)
                 return Response({'message':'Login successfully !!'})

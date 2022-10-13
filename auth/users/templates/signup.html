@@ -13,7 +13,7 @@
 {% endif %}
 
 <h1>Signup!</h1>
-
+<div align="center">
 <form method = "POST" action="{% url 'register' %}">
     {% csrf_token %}
     username:
@@ -34,6 +34,7 @@
 
 
 </form>
+</div>
 
 
 {% endblock %}
