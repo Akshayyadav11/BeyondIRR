@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('users.urls')),
     path('blog/', include('blogs.urls')),
-    path('gettoken/', TokenObtainPairView.as_view(), name='token_obtain_view'),
-    path('verifytoken/',TokenVerifyView.as_view(), name='token_verify_view'),
-    path('refreshtoken/', TokenRefreshView.as_view(), name='token_refresh_view'),
+    # path('gettoken/', TokenObtainPairView.as_view(), name='token_obtain_view'),
+    # path('verifytoken/',TokenVerifyView.as_view(), name='token_verify_view'),
+    # path('refreshtoken/', TokenRefreshView.as_view(), name='token_refresh_view'),
 ]

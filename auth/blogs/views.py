@@ -15,8 +15,10 @@ class PostCreate(View):
         return render(request, "create_post_form.html", {'post_list': obj})
 
     def post(self, request): 
-        obj = PostForm(request.POST)        
+        obj = PostForm(request.POST)    
+        breakpoint()    
         if obj.is_valid():
+            #obj.author = request.user.id
             instance = obj.save()
             instance.save()
             return redirect('blog:blog_list')
@@ -50,13 +52,14 @@ class PostDelete(View):
 class EditPost(View): 
     def get(self, request, id):
         obj = Post.objects.get(id=id)
+       
         fm = PostForm(instance=obj)
         return render(request, "update_post_form.html", {'post_list': fm})
 
     def post(self, request, id):
         pos = Post.objects.get(id=id)
         fm = PostForm(request.POST, instance=pos)
-        if fm.is_valid():
+        if fm.is_valid():           
             fm.save()
             return redirect('blog:blog_list')
     
