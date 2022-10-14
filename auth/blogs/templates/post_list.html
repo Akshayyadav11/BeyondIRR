@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% block content %}
 <style>
     body {
@@ -45,7 +45,7 @@
                  
 
                 {% for post in post_list %}
-                {{post.author}}
+               
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">{{ post.title }}</h2>

@@ -11,11 +11,19 @@
 <br/>
 {% endif %}
 
-<h1>Login!</h1>
+<style>
+    .form-center {
+    display:flex;
+    justify-content: center;
+  }
+</style>
 
-<form method = "POST" action="{% url 'login' %}">
+<div class="form-center">
+   
+<form method = "POST" action="{% url 'users:login' %}">
+    <h1>Login!</h1>
     {% csrf_token %}
-    username:
+    Username:
     <br/>
     <input type="text" name="username" />
     <br/>
@@ -26,9 +34,9 @@
     <input class ="btn btn-primary" type="submit" value= "Login" />
     <br/>
 
-
-
+    <p class="text-center">If you already have an account, <a href="{% url 'users:register' %}">Signup</a> instead.</p>
+   
 </form>
 
-
+</div>
 {% endblock %}

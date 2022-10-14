@@ -1,7 +1,8 @@
 from django.db import models
 
 # Create your models here.
-from users.models import User
+#rom users.models import User
+from django.contrib.auth.models import User
 
 STATUS = (
     (0,"Draft"),

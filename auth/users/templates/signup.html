@@ -12,11 +12,20 @@
 <br/>
 {% endif %}
 
-<h1>Signup!</h1>
-<div align="center">
-<!-- <form method = "POST" action="{% url 'register' %}">
+<style>
+    .form-center {
+    display:flex;
+    justify-content: center;
+  }
+</style>
+<div class="form-center">
+
+
+<br/>
+<form method = "POST" action="{% url 'users:register' %}">
+    <h1>Signup!</h1>
     {% csrf_token %}
-    username:
+    Username:
     <br/>
     <input type="text" name="username" />
     <br/>
@@ -28,31 +37,13 @@
     <br/>
     <input type="password" name="password2" />
     <br/>
-    <input class ="btn btn-primary" type="submit" value= "signup" />
+    <input class ="btn btn-primary" type="submit" value= "Signup" />
     <br/>
 
 
 
-</form> -->
-
-<form method = "POST" action="{% url 'register' %}">
-    {% csrf_token %}
-    Email:   
-   {{form.email}}
-    <br/>
-    Password:
-    
-    {{form.password}}
-    <br/>
-   
-    
-    <input class ="btn btn-primary" type="submit" value= "signup" />
-    <br/>
-
-
-
+    <p class="text-center">If you already have an account, <a href="{% url 'users:login' %}">login</a> instead.</p>
 </form>
 </div>
-
 
 {% endblock %}

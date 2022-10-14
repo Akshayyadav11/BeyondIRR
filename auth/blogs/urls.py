@@ -16,12 +16,15 @@ Including another URLconf
 from . import views
 from django.urls import path, include
 from .views import *
+
 app_name = 'blog'
+
 urlpatterns = [
     path('create/', views.PostCreate.as_view(),name='blog_create'),
     path('', views.PostList.as_view(),name='blog_list'),    
     path('detail/<int:id>/', views.PostDetail.as_view(), name='post_detail'),
     path('delete/<int:id>/', views.PostDelete.as_view(), name='post_delete'),
     path('edit/<int:id>/', views.EditPost.as_view(), name='post_update'),
+    
       
 ]
