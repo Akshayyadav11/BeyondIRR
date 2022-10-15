@@ -15,8 +15,8 @@ def send_invitation(to_email, code, user):
     msg.send()
     
 
-def invitation_accepted(user, invitation, to_email):
-    from_email = settings.EMAIL_HOST_USER
+def invitation_accepted(user, invitation, from_email):
+    to_email = settings.EMAIL_HOST_USER
     
     
     subject = 'Invitation accepted'

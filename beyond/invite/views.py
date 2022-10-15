@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 import random
@@ -12,6 +12,7 @@ def invite(request):
     #breakpoint()
     if request.method=='POST':
         email = request.POST.get('email')
+        username = request.POST.get('username')
         
         if email:
             #breakpoint()
@@ -31,6 +32,7 @@ def invite(request):
 
 def accept_invitation(request):
     if request.method == 'POST':
+        breakpoint()
         code = request.POST.get('code')
         invitations = Invitation.objects.filter(code=code, email=request.user.email)
         if invitations:
@@ -43,10 +45,10 @@ def accept_invitation(request):
         #     user.save()
             
             messages.info(request, 'Invitation accepted')
+            breakpoint()
+            invitation_accepted(request.user, invitation, request.user.email)
             
-            invitation_accepted(request.user, invitation)
-            
-            #return redirect('')
+            return redirect('users:login')
         else:
             messages.info(request, 'Invitation was not found')
     else:

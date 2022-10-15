@@ -21,7 +21,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from invite.models import Invitation
-
+from invite.views import accept_invitation
 def signup(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
@@ -33,10 +33,12 @@ def signup(request):
                 user = User.objects.create_user(request.POST['username'],request.POST['email'],password=request.POST['password1'])
                 auth.login(request,user)
                 
-                invitations = Invitation.objects.filter(user=user.id, status=Invitation.INVITED)
+                invitations = Invitation.objects.filter(email=user.email, status=Invitation.INVITED)
                 breakpoint()
                 if invitations:
-                    return redirect('invite:accept_invitation')
+                    breakpoint()
+                    accept_invitation(request)
+                    #return redirect('invite:accept_invitation')
                 
                 return redirect('users:login')
         else:
