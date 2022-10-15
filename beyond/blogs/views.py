@@ -132,3 +132,15 @@ class SearchUserSpecificPosts(View):
                 
         except User.DoesNotExist:
             return render(request, "search_post.html", {'error':'User not found !'})
+        
+
+class UserPostArchive(View):
+   def get(self, request, id):
+        post = Post.objects.get(id=id) 
+        post.status = 2
+        post.save(update_fields=['status'])
+                                        
+        obj = Post.objects.filter(status=1).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    

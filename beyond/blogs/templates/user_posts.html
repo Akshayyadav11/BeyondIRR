@@ -47,7 +47,17 @@
                           </a>&nbsp;&nbsp;&nbsp;
                         <a href="{% url 'blog:post_update' post.id  %}">
                         <span class="glyphicon glyphicon-edit"></span>
-                        </a>
+                        </a>&nbsp;&nbsp;&nbsp;
+                         
+                        {% if request.user.is_superuser  %}
+                            {%if post.status == 0 or post.status == 1 %}
+                              
+                                <a href="{% url 'blog:post_archive' post.id  %}">
+                                    <i class="fa fa-archive" aria-hidden="true"></i>
+                                </a>
+                               
+                            {%endif%}
+                        {%endif%}
                         </div>
                     </div>
                 </div>
