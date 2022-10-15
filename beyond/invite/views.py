@@ -40,10 +40,6 @@ def accept_invitation(request):
             invitation.status = Invitation.ACCEPTED
             invitation.save()
             
-        #     user = invitation.user
-        #    # user.add(request.user)
-        #     user.save()
-            
             messages.info(request, 'Invitation accepted')
             breakpoint()
             invitation_accepted(request.user, invitation, request.user.email)
