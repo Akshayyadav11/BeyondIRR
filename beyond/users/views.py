@@ -26,7 +26,7 @@ def signup(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
             try:
-                breakpoint()
+                #breakpoint()
                 User.objects.get(username = request.POST['username'])
                 return render (request,'signup.html', {'error':'Username is already taken!'})
             except User.DoesNotExist:
@@ -34,9 +34,9 @@ def signup(request):
                 auth.login(request,user)
                 
                 invitations = Invitation.objects.filter(email=user.email, status=Invitation.INVITED)
-                breakpoint()
+                #breakpoint()
                 if invitations:
-                    breakpoint()
+                    #breakpoint()
                     accept_invitation(request)
                     #return redirect('invite:accept_invitation')
                 
