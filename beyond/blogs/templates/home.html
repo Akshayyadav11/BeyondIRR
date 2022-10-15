@@ -58,27 +58,43 @@
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="#">Policy</a>
                         </li> -->
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_posts' %}">OwnBlogs</a>
-                        </li>
-
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:blog_create' %}">BlogPost</a>
-                        </li>
-
-                        {% if request.user.is_superuser %}
-
                         
+                        {% if not request.user.is_superuser %}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:blog_create' %}">PostIt</a>
+                        </li>
+                       
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:blog_list' %}">Blogs</a>
+                        </li>
+                        
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_spec_draft_posts' %}">DraftBlog</a>
+                        </li>
+
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_spec_archive_posts' %}">ArchivedBlog</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_spec_all_posts' %}">OwnBlogs</a>
+                        </li>
+                        {% endif %}
+                        {% if request.user.is_superuser %}
                             <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_draft_posts' %}">DraftBlogs</a>
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:blog_list' %}">Blogs</a>
                             </li>
                             <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_archive_posts' %}">ArchivedBlogs</a>
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_draft_posts' %}">Drafted</a>
+                            </li>
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_posts' %}">OwnBlogs</a>
+                            </li>
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:user_archive_posts' %}">ArchivedBlog</a>
                             </li>
                             <li class="nav-item text-black">
                                 <a class="nav-link text-black font-weight-bold" href="{% url 'blog:all_posts' %}">AllBlogs</a>
                             </li>
-                            
                             <li class="nav-item text-black">
                                 <a class="nav-link text-black font-weight-bold" href="{% url 'invite:invite' %}">InviteUser</a>
                             </li>

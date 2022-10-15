@@ -90,16 +90,40 @@ class AllUserPosts(View):
     
 
 
-class UserDraftPosts(View):
+class AllDraftPosts(View):
    def get(self, request):
         obj = Post.objects.filter(status=0).order_by('-created_on')
         keys = {"post_list": obj}
         return render(request, "post_list.html", keys)
     
 
-class UserArchivePosts(View):
+class AllArchivePosts(View):
    def get(self, request):
         
         obj = Post.objects.filter(status=2).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    
+
+class UserSpecificPosts(View):
+   def get(self, request):
+        obj = Post.objects.filter(author=request.user.id, status=1).order_by('-created_on')
+        # obj = Post.objects.filter(status=1).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    
+
+
+class UserSpecificDraftPosts(View):
+   def get(self, request):
+        obj = Post.objects.filter(status=0,author=request.user.id).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    
+
+class UserSpecificArchivePosts(View):
+   def get(self, request):
+        
+        obj = Post.objects.filter(status=2, author=request.user.id).order_by('-created_on')
         keys = {"post_list": obj}
         return render(request, "post_list.html", keys)
