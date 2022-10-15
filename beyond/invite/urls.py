@@ -21,7 +21,7 @@ from django.urls import re_path
 app_name = 'invite'
 urlpatterns = [    
     path("accept/", views.accept_invitation, name="accept_invitation"),
-    path("invitation/", views.invite, name="invite"),
+    path("invitation/", views.invite, name="invite_user"),
     path("", views.invite_index, name="invite_index"),
     
 ]

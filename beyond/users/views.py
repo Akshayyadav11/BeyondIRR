@@ -34,7 +34,7 @@ def signup(request):
                 auth.login(request,user)
                 
                 invitations = Invitation.objects.filter(user=user.id, status=Invitation.INVITED)
-                
+                breakpoint()
                 if invitations:
                     return redirect('invite:accept_invitation')
                 

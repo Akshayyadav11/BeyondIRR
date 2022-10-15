@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 import random
 from .models import Invitation
-from .utilities import send_invitation
+from .utilities import send_invitation, invitation_accepted
 # Create your views here.
 def invite(request):
    # breakpoint()
@@ -38,13 +38,13 @@ def accept_invitation(request):
             invitation.status = Invitation.ACCEPTED
             invitation.save()
             
-            user = invitation.user
-           # user.add(request.user)
-            user.save()
+        #     user = invitation.user
+        #    # user.add(request.user)
+        #     user.save()
             
             messages.info(request, 'Invitation accepted')
             
-            accept_invitation(user, invitation)
+            invitation_accepted(request.user, invitation)
             
             #return redirect('')
         else:
