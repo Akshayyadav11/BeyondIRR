@@ -20,7 +20,9 @@
                     <form method='post'>
                         {% csrf_token %}
                        {% if error %}
-                        {{error}}
+                        {{ error }}
+                        <br/>
+                        <br/>
                        {%endif%}
 
                         <table>
