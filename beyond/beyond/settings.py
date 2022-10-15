@@ -197,6 +197,6 @@ EMAIL_HOST_PASSWORD = 'jmjznlbcwzsibgrg'
 EMAIL_PORT = 587
 
 #This did the trick
-DEFAULT_FROM_EMAIL = 'Akshay '  + EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-ACCEPTATION_URL = 'http://127.0.0.1:7000/api/user/register'
+ACCEPTATION_URL = 'http://127.0.0.1:8000/api/user/register'

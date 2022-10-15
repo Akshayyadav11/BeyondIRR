@@ -21,7 +21,7 @@ from django.urls import re_path
 app_name = 'users'
 urlpatterns = [    
     path("register/", views.signup, name="register"),
-    #path('register/', views.Register.as_view(), name='register'),
+   
     path('login/', views.login, name='login'),
    
     path('logout/', views.logout, name='logout'),

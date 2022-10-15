@@ -15,11 +15,11 @@ def invite(request):
         
         if email:
             breakpoint()
-            invitations = Invitation.objects.filter(user=user.username, email=email)
+            invitations = Invitation.objects.filter(user=user.id, email=email)
             if not invitations:
                 
                 code = ''.join(random.choice('sdasdadndj3442nnnds324') for i in range(4))
-                invitation = Invitation.objects.create(user=user.id, email=email, code=code)
+                invitation = Invitation.objects.create(user=user, email=email, code=code)
                 
                 messages.info(request, 'The user was invited')
                 send_invitation(email, code, user.username)
