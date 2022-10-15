@@ -7,7 +7,7 @@ from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
 from django.db.models import Q
-
+from django.contrib.auth.models import User
 
 class PostCreate(View):
     def get(self, request):
@@ -115,3 +115,20 @@ class UserSpecificArchivePosts(View):
         keys = {"post_list": obj}
         return render(request, "post_list.html", keys)
     
+
+
+class SearchUserSpecificPosts(View): 
+    def get(self, request):
+        return render(request, "search_post.html", {})
+       
+    def post(self, request):
+        try:
+            email = request.POST['email'] 
+            user = User.objects.get(email=email)
+            
+            post_obj = Post.objects.filter(author=user.id).order_by('-created_on')  
+            keys = {"post_list": post_obj}
+            return render(request, "post_list.html", keys)
+                
+        except User.DoesNotExist:
+            return render(request, "search_post.html", {'error':'User not found !'})

@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+{% block content %}
+    
+<style>    
+    table, th, td {    
+   
+    margin-left: auto;  
+    margin-right: auto;  
+    border-collapse: collapse;    
+    width: 500px;  
+    text-align: center;  
+    font-size: 20px;  
+    }    
+
+</style>
+
+
+                 
+
+                    <form method='post'>
+                        {% csrf_token %}
+                       {% if error %}
+                        {{error}}
+                       {%endif%}
+
+                        <table>
+                            
+                            <tr>
+                                <td></td>
+                                <td> Search User Blog</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td> Email: </td>
+                                <td><input type="email" name="email" /></td>
+                                <td><button class ="btn btn-primary">Search</button></td>
+                            </tr>
+                            
+                           
+            
+                    </form>
+
+{%endblock%}

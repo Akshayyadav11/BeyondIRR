@@ -34,4 +34,6 @@ urlpatterns = [
     path('userspecific/archiveposts/', views.UserSpecificArchivePosts.as_view(), name='user_spec_archive_posts'),
     path('userspecific/posts/', views.UserSpecificPosts.as_view(), name='user_spec_all_posts'),
     
+    path('search/userspecific/posts/', views.SearchUserSpecificPosts.as_view(), name='search_user_spec_all_posts'),
+    
 ]

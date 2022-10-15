@@ -75,6 +75,9 @@
                         {% endif %}
                         {% if request.user.is_superuser %}
                             <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'blog:search_user_spec_all_posts' %}">Search</a>
+                            </li>
+                            <li class="nav-item text-black">
                                 <a class="nav-link text-black font-weight-bold" href="{% url 'blog:blog_list' %}">Blogs</a>
                             </li>
                             <li class="nav-item text-black">
