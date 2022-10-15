@@ -8,6 +8,7 @@ from .forms import PostForm
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
+from django.db.models import Q
 #@login_required(login_url='blog_list')
 
 class PostCreate(View):
@@ -77,3 +78,28 @@ class UserPosts(View):
         logged_in_user_posts = Post.objects.filter(author=logged_in_user)
 
         return render(request, 'user_posts.html', {'user_posts': logged_in_user_posts})
+    
+
+
+class AllUserPosts(View):
+   def get(self, request):
+        obj = Post.objects.all().order_by('-created_on')
+        # obj = Post.objects.filter(status=1).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    
+
+
+class UserDraftPosts(View):
+   def get(self, request):
+        obj = Post.objects.filter(status=0).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
+    
+
+class UserArchivePosts(View):
+   def get(self, request):
+        
+        obj = Post.objects.filter(status=2).order_by('-created_on')
+        keys = {"post_list": obj}
+        return render(request, "post_list.html", keys)
