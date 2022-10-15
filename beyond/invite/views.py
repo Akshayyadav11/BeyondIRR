@@ -32,7 +32,7 @@ def invite(request):
 
 def accept_invitation(request):
     if request.method == 'POST':
-        breakpoint()
+       # breakpoint()
         code = request.POST.get('code')
         invitations = Invitation.objects.filter(code=code, email=request.user.email)
         if invitations:
@@ -41,7 +41,7 @@ def accept_invitation(request):
             invitation.save()
             
             messages.info(request, 'Invitation accepted')
-            breakpoint()
+            #breakpoint()
             invitation_accepted(request.user, invitation, request.user.email)
             
             return redirect('users:login')
