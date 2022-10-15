@@ -12,7 +12,8 @@ from django.shortcuts import (get_object_or_404,
 
 class PostCreate(View):
     def get(self, request):
-        obj = PostForm()        
+        obj = PostForm()   
+        obj.author = self.request.user     
         return render(request, "create_post_form.html", {'post_list': obj})
 
     
