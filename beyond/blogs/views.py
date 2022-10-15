@@ -13,16 +13,17 @@ from django.shortcuts import (get_object_or_404,
 class PostCreate(View):
     def get(self, request):
         obj = PostForm()   
-        obj.author = self.request.user     
+        
         return render(request, "create_post_form.html", {'post_list': obj})
 
     
     def post(self, request): 
         obj = PostForm(request.POST)    
        
-        if obj.is_valid():
-            #obj.author = request.user.id
-            instance = obj.save()
+        if obj.is_valid():           
+           
+            instance = obj.save(commit=False)
+            instance.author = self.request.user
             instance.save()
             return redirect('blog:blog_list')
         else:           
@@ -68,4 +69,11 @@ class EditPost(View):
         if fm.is_valid():           
             fm.save()
             return redirect('blog:blog_list')
-    
+
+
+class UserPosts(View):
+    def get(self, request):
+        logged_in_user = request.user.id
+        logged_in_user_posts = Post.objects.filter(author=logged_in_user)
+
+        return render(request, 'user_posts.html', {'user_posts': logged_in_user_posts})

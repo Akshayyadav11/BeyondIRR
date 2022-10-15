@@ -1,20 +1,9 @@
-<!<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+{% extends "home.html" %}
+{% block content %}
 
-        <style>    
+<style>    
             table, th, td {    
-             
+           
             margin-left: auto;  
             margin-right: auto;  
             border-collapse: collapse;    
@@ -22,34 +11,26 @@
             text-align: center;  
             font-size: 20px;  
             }    
-            </style>    
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+            </style>  
 
         <form method='post'>
             {% csrf_token %}
-            <table width="100%" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><h1>Invite </h1></td>
-                </tr>           
-            </table>
+           
             <table>
+                
+                <tr>
+                    <td></td>
+                    <td> Invite User</td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td> Email: </td>
-                </tr>
-                <tr>
                     <td><input type="email" name="email" /></td>
-                </tr>
-                <tr>
                     <td><button class ="btn btn-primary">Send Invitation</button></td>
                 </tr>
+                
+               
 
         </form>
+        {%endblock%}
 
-        <script src="" async defer></script>
-    </body>
-</html>

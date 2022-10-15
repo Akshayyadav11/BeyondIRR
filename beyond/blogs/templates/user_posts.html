@@ -1,4 +1,6 @@
-{% extends "home.html" %}
+
+
+    {% extends "home.html" %}
 {% block content %}
 <style>
     body {
@@ -20,7 +22,6 @@
     }
 </style>
 
-
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
@@ -29,9 +30,18 @@
             <div class="card mb-4">
                 <div class="card-body">
                
-                 
+                    {% comment %} <div>
+                        {% for post in posts %}
+                        
+                            Username: {{ post.user.username }}
+                            Post: {{ post.content }}
+                        
+                            <br>
+                        
+                        {% endfor %}
+                        </div> {% endcomment %}
 
-                {% for post in post_list %}
+                {% for post in user_posts %}
                
                 <div class="card mb-4">
                     <div class="card-body">
