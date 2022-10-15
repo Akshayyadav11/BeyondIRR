@@ -33,5 +33,5 @@ urlpatterns = [
     path('userspecific/draftposts/', views.UserSpecificDraftPosts.as_view(), name='user_spec_draft_posts'),
     path('userspecific/archiveposts/', views.UserSpecificArchivePosts.as_view(), name='user_spec_archive_posts'),
     path('userspecific/posts/', views.UserSpecificPosts.as_view(), name='user_spec_all_posts'),
-      
+    
 ]

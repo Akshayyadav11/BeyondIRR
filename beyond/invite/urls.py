@@ -22,5 +22,6 @@ app_name = 'invite'
 urlpatterns = [    
     path("accept/", views.accept_invitation, name="accept_invitation"),
     path("invitation/", views.invite, name="invite"),
+    path("", views.invite_index, name="invite_index"),
     
 ]

@@ -51,3 +51,7 @@ def accept_invitation(request):
             messages.info(request, 'Invitation was not found')
     else:
         return render(request, 'invitation_accepted.html')
+    
+
+def invite_index(request):
+    return render(request, 'invite_home.html')

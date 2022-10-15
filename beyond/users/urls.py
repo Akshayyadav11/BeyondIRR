@@ -20,13 +20,9 @@ from . import views
 from django.urls import re_path 
 app_name = 'users'
 urlpatterns = [    
-    path("register/", views.signup, name="register"),
-   
-    path('login/', views.login, name='login'),
-   
-    path('logout/', views.logout, name='logout'),
-    
- 
-    
+    path("register/", views.signup, name="register"),   
+    path('login/', views.login, name='login'),   
+    path('logout/', views.logout, name='logout'),    
+    path('', views.user_index, name="beyond_home"),    
     
 ]
