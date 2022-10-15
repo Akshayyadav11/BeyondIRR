@@ -11,26 +11,42 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+
+        <style>    
+            table, th, td {    
+             
+            margin-left: auto;  
+            margin-right: auto;  
+            border-collapse: collapse;    
+            width: 500px;  
+            text-align: center;  
+            font-size: 20px;  
+            }    
+            </style>    
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <table width="100%" cellspacing="0" cellpadding="0">
-            <tr>
-                <td><h1>Invite </h1></td>
-            </tr>           
-        </table>
+        
 
         <form method='post'>
             {% csrf_token %}
-
-            Email:
-            <br/>
-            <input type="email" name="email" />
-            <br/>
-           
-            <button class ="button is-success">Send Invitation</button>
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><h1>Invite </h1></td>
+                </tr>           
+            </table>
+            <table>
+                <tr>
+                    <td> Email: </td>
+                </tr>
+                <tr>
+                    <td><input type="email" name="email" /></td>
+                </tr>
+                <tr>
+                    <td><button class ="btn btn-primary">Send Invitation</button></td>
+                </tr>
 
         </form>
 

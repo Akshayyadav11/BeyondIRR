@@ -9,12 +9,12 @@ from .utilities import send_invitation
 def invite(request):
    # breakpoint()
     user = get_object_or_404(User, pk=request.user.id)
-    breakpoint()
+    #breakpoint()
     if request.method=='POST':
         email = request.POST.get('email')
         
         if email:
-            breakpoint()
+            #breakpoint()
             invitations = Invitation.objects.filter(user=user.id, email=email)
             if not invitations:
                 
